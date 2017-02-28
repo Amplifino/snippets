@@ -1,6 +1,7 @@
 package com.amplifino.ds.issue.impl;
 
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.BundleContext;
@@ -23,8 +24,12 @@ public class RouteImpl implements Route {
 	
 	private RouteConfiguration config;
 	private Filter destinationFilter;
-	@Reference(cardinality=ReferenceCardinality.AT_LEAST_ONE)
-	private List<ServiceReference<Destination>> destinations;
+	private final List<ServiceReference<Destination>> destinations = new CopyOnWriteArrayList<>();
+	
+	@Reference(name="destinations", cardinality=ReferenceCardinality.AT_LEAST_ONE) 
+	public void addDestination(ServiceReference<Destination> destination) {
+		this.destinations.add(destination);
+	}
 	
 	@Activate
 	public void activate(RouteConfiguration config, BundleContext context) throws InvalidSyntaxException  {
