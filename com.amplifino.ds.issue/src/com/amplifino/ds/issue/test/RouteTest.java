@@ -19,6 +19,11 @@ import org.osgi.util.tracker.ServiceTracker;
 
 import com.amplifino.ds.issue.Route;
 
+/**
+ * This class can either be used as a bnd osgi test,
+ * or as a gogo shell command to configure two destinations and routes. 
+ *
+ */
 @Component(service=RouteTest.class, property={"osgi.command.scope=dsissue", "osgi.command.function=configure"}) 
 public class RouteTest {
 	
