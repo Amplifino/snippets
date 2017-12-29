@@ -1,0 +1,15 @@
+-buildpath: \
+	osgi.cmpn;version=6.0,\
+	osgi.core;version=6.0,\
+	osgi.annotation;version=6.0
+Private-Package: \
+	org.apache.felix.cm.file,\
+	org.apache.felix.cm.impl,\
+	org.apache.felix.cm.impl.helper,\
+	org.apache.felix.cm.impl.persistence
+Export-Package: \
+	org.apache.felix.cm,\
+	org.osgi.service.cm
+Bundle-Version: 1.9.0
+Bundle-Name: Wrapper for Felix Config Admin
+Bundle-Activator: org.apache.felix.cm.impl.Activator
